@@ -1,0 +1,28 @@
+version: '2'
+services:
+  swagger_backend:
+    container_name: swagger_backend
+    image: swagger-backend
+    volumes:
+    - /code/persistent/swagger-repository:/swagger-repository
+    environment:
+    - "SWAGGER_REPOSITORY=/swagger-repository"
+
+  swagger_editor:
+    container_name: swagger_editor
+    image: swaggerapi/swagger-editor
+    volumes:
+    - /code/persistent/swagger-editor/defaults.json:/editor/config/defaults.json
+
+  swagger_router:
+    container_name: swagger_router
+    image: swagger-router
+    links:
+    - swagger_backend
+    - swagger_editor
+    ports:
+    - 8080:80
+
+
+
+

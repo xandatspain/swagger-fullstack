@@ -1,0 +1,6 @@
+.vagrant/
+persistent/swagger-repository/*
+swagger-backend-client/
+controller/
+
+
